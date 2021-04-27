@@ -1,21 +1,42 @@
-const express = require('express');
-const dotenv = require('dotenv');
+const express = require("express");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const colors = require("colors");
+const campaigns = require("./routes/campaigns");
+const connectDB = require("./config/db");
 
-dotenv.config({ path: './config/config.env'})
+// Load env vars
+dotenv.config({ path: "./config/config.env" });
+
+// Connect to database
+connectDB();
 
 const app = express();
 
-app.get('/api/v1/campaigns/:country', (req, res) => {
-  res.status(200).json({success: true, data: `Show the best campaign for ${req.params.country}`})
-})
+// Body parse
+app.use(express.json());
 
-app.post('/api/v1/campaigns', (req, res) => {
-  res.status(201).json({success: true, data: 'create new campaign'})
-})
+// Dev logging middleware
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
+app.use("/api/v1/campaigns", campaigns);
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV} mode on http://localhost:${PORT}`
-)});
+const server = app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on http://localhost:${PORT}`
+      .blue.bold
+  );
+});
+
+// Handle unhandled promisses rejections
+process.on("unhandledRejection", (err, promisse) => {
+  // eslint-disable-next-line no-console
+  console.log(`Error: ${err.message}`.red);
+  // Close server and exit process
+  server.close(() => process.exit(1));
+});
