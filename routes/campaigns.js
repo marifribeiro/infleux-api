@@ -2,6 +2,7 @@ const express = require("express");
 
 const {
   getCampaigns,
+  getBestCampaign,
   createCampaign,
   updateCampaign,
   deleteCampaign,
@@ -9,9 +10,9 @@ const {
 
 const router = express.Router();
 
-router.route("/:country").get(getCampaigns);
+router.route("/:country").get(getBestCampaign);
 
-router.route("/").post(createCampaign);
+router.route("/").post(createCampaign).get(getCampaigns);
 
 router.route("/:id").put(updateCampaign).delete(deleteCampaign);
 

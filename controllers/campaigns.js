@@ -2,9 +2,9 @@ const Campaign = require("../models/Campaign");
 
 // @desc    Get best campaign according to country
 // @route   GET /api/v1/campaigns/:country
-// @access  Private
+// @access  Public
 
-exports.getCampaigns = async (req, res) => {
+exports.getBestCampaign = async (req, res) => {
   try {
     const campaigns = await Campaign.find({ country: req.params.country });
 
@@ -22,9 +22,26 @@ exports.getCampaigns = async (req, res) => {
   }
 };
 
+// @desc    Get best campaign according to country
+// @route   GET /api/v1/campaigns/:country
+// @access  Public
+
+exports.getCampaigns = async (req, res) => {
+  try {
+    const campaigns = await Campaign.find();
+
+    res.status(200).json({
+      success: true,
+      data: campaigns,
+    });
+  } catch (err) {
+    res.status(400).json({ success: false });
+  }
+};
+
 // @desc    Update campaign
 // PUT /api/v1/campaigns/:id
-// @access Private
+// @access Public
 
 exports.updateCampaign = async (req, res) => {
   const campaign = await Campaign.findByIdAndUpdate(req.params.id, req.body, {
@@ -41,7 +58,7 @@ exports.updateCampaign = async (req, res) => {
 
 // @desc    Delete campaign
 // PUT /api/v1/campaigns/:id
-// @access Private
+// @access Public
 
 exports.deleteCampaign = async (req, res) => {
   const campaign = await Campaign.findByIdAndDelete(req.params.id);
@@ -58,7 +75,7 @@ exports.deleteCampaign = async (req, res) => {
 
 // @desc    Create new campaign
 // @route   POST /api/v1/campaigns
-// @access  Private
+// @access  Public
 
 exports.createCampaign = async (req, res) => {
   try {
