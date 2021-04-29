@@ -22,6 +22,7 @@ The **country** parameter of the URL is case-sensitive. The front-end applicatio
 ### Create a new campaign
 
 The `country` stuff I just said above still applies :)
+
 `POST https://infleux-api.herokuapp.com/api/v1/campaigns`
 
 ```json
@@ -72,8 +73,20 @@ You can send only the information you wish to change, or multiple values.
 
 ## Run locally
 
+Clone this repo: 
+
+`https://github.com/maryplank/infleux-api.git`
+
+
+Inside the project's directory, install the dependecies:
+
+`npm install`
+
+
 To run locally in development mode:
+
 `npm run dev`
 
 To run locally in production mode:
+
 `npm start`
