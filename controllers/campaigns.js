@@ -7,6 +7,7 @@ const Campaign = require("../models/Campaign");
 exports.getCampaigns = async (req, res) => {
   try {
     const campaigns = await Campaign.find({ country: req.params.country });
+
     const highestBid = campaigns.reduce(
       (max, campaign) => (max && max.bid > campaign.bid ? max : campaign),
       null
