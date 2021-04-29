@@ -8,7 +8,7 @@ The main goal of this back-end application is for Advertises to create new campa
 
 This was developed using NodeJS, MongoDB and deployed at Heroku.
 
-##### During developing, I needed an update and delete route for developing reasons so I ended up making a CRUD (sorry, I know this wasn't in the challenge's description). I'll leave all routes documentet below for testing, but I'll order according with what was asked.
+##### During developing, I needed an update and delete route for developing reasons so I ended up making a CRUD (sorry, I know this wasn't in the challenge's description). I'll leave all routes documented below for testing, but I'll order according with what was asked.
 
 ## Routes
 
@@ -86,6 +86,7 @@ Inside the project's directory, install the dependecies:
 To run locally in development mode:
 
 `npm run dev`
+
 
 To run locally in production mode:
 
