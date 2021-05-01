@@ -31,7 +31,7 @@ The `country` stuff I just said above still applies :)
     "name": "Vivara",
     "description": "Campanha para nova linha de berlocs da Disney",
     "conversionType": "CPC",
-    "country": "Brasil",
+    "country": "brazil",
     "bid": 1.65
   }
 ```
