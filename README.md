@@ -16,14 +16,14 @@ This was developed using NodeJS, MongoDB and deployed at Heroku.
 
 The **country** parameter of the URL is case-sensitive. The front-end application makes sure to send all the values lowercased and kebab-case for standardization reasons, so that's how you'll have to search them.
 
-`GET https://infleux-api.herokuapp.com/api/v1/campaigns/united-states`
+`GET /api/v1/campaigns/united-states`
 
 
 ### Create a new campaign
 
 The `country` stuff I just said above still applies :)
 
-`POST https://infleux-api.herokuapp.com/api/v1/campaigns`
+`POST /api/v1/campaigns`
 
 ```json
 
@@ -39,12 +39,12 @@ The `country` stuff I just said above still applies :)
 
 ### Fetch all campaigns
 
-`GET https://infleux-api.herokuapp.com/api/v1/campaigns`
+`GET /api/v1/campaigns`
 
 
 ### Update campaign
 
-`PUT https://infleux-api.herokuapp.com/api/v1/campaigns/<campaign_id>`
+`PUT /api/v1/campaigns/<campaign_id>`
 
 You can send only the information you wish to change, or multiple values.
 
@@ -68,7 +68,7 @@ You can send only the information you wish to change, or multiple values.
 
 ### Delete campaign
 
-`DELETE https://infleux-api.herokuapp.com/api/v1/campaigns/<campaign_id>`
+`DELETE /api/v1/campaigns/<campaign_id>`
 
 
 ## Run locally
